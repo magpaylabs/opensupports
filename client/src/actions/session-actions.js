@@ -116,6 +116,9 @@ export default {
 
                         resolve(result);
                     } else if(sessionStore.isLoggedIn()) {
+                        let sessionData = sessionStore.getSessionData();
+                        let userData = sessionStore.getUserData();
+                        store.dispatch(this.getUserData(sessionData.userId, sessionData.token, userData.staff));
                         store.dispatch({
                             type: 'SESSION_CHECKED'
                         });
